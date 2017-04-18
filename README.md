@@ -1,5 +1,4 @@
 # Create-react-app with Semantic UI
----
 
 ## stack
 - create-react-app
