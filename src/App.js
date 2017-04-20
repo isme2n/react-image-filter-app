@@ -21,7 +21,6 @@ class App extends Component {
   }
 
   drawImageData(image) {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     this.calcSize(image);
 
@@ -39,26 +38,29 @@ class App extends Component {
   }
 
   imageLoad(e) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     this.setState({
       img:null
     });
+    if(e.target.files.length === 1){
+      var file = e.target.files[0];
+      var fileReader = new FileReader();
 
-    var file = e.target.files[0];
-    var fileReader = new FileReader();
+      var self = this;
+      fileReader.onload = function (e) {
+          var image = new window.Image();
+          image.src = e.target.result;
+          self.setState({
+            img : image
+          })
+          image.onload = function () {
+              self.drawImageData(image);
+          }
+      };
+      fileReader.readAsDataURL(file);}
+    else{
 
-    var self = this;
-    fileReader.onload = function (e) {
-        var image = new window.Image();
-        image.src = e.target.result;
-        self.setState({
-          img : image
-        })
-        image.onload = function () {
-            self.drawImageData(image);
-        }
-    };
-
-    fileReader.readAsDataURL(file);
+    }
   }
 
   restore(){
@@ -92,9 +94,9 @@ class App extends Component {
           <Header as='h2' style={{color:'#fff'}}>React Image Filter</Header>
         </Container>
         <Container fluid>
-          <canvas id="canvas" ref="canvas" width="500" height="500"></canvas><br/>
+          <canvas id="canvas" ref="canvas" width={window.innerWidth/2} height={window.innerWidth/2}></canvas><br/>
           <input id="loadButton" onChange={this.imageLoad.bind(this)} type="file" accept="image/*"/>
-          <Button id="restoreButton" onClick={this.restore}>원본보기</Button>
+          <Button id="restoreButton" onClick={this.restore} disabled={this.state.img ? false : true}>원본보기</Button>
         </Container>
         <Container fluid>
           {this.state.img ?<FilterList filter={this.filter} img={this.state.img}/> :null}
