@@ -11,3 +11,6 @@ cd {dir-name}
 npm install
 npm start
 ```
+## sample
+
+![sample](./img/sample.png)
