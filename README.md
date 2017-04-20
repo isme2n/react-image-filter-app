@@ -1,4 +1,4 @@
-# Create-react-app with Semantic UI
+# React-Image-Filter-App
 
 ## stack
 - create-react-app
@@ -6,9 +6,8 @@
 
 ## how to use?
 ```
-git clone https://github.com/isme2n/create-react-app-semantic-ui.git {dir-name}
+git clone https://github.com/isme2n/react-image-filter-app.git {dir-name}
 cd {dir-name}
 npm install
 npm start
 ```
-
