@@ -11,7 +11,7 @@ class FilterList extends Component {
   render(){
     return (
       <div style={{display:'inline'}}>
-        {this.props.img ? Object.keys(filter).map((key) => (<span key={key} onClick={this.adjustFilter.bind(this,filter[key])}><FilterBox func={filter[key]} img={this.props.img}/></span>))
+        {this.props.img ? Object.keys(filter).map((key) => (<span key={key} onClick={this.adjustFilter.bind(this,filter[key])}><FilterBox func={filter[key]} filterName={key} img={this.props.img}/></span>))
            :null}
       </div>
     )

@@ -27,7 +27,10 @@ class FilterBox extends Component {
 
     render(){
       return (
-        <canvas id="canvas" ref="canvas" width="200" height="200"></canvas>
+        <span>
+          <span style={{position:"absolute"}}>{this.props.filterName}</span>
+          <canvas id="canvas" ref="canvas" width="200" height="200"></canvas>
+        </span>
     );
   }
 };
