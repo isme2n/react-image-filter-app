@@ -25,6 +25,10 @@ class App extends Component {
     this.calcSize(image);
 
     ctx.drawImage(image, 0, (canvas.offsetHeight-image.height)/2, image.width, image.height);
+
+    this.setState({
+      img : image
+    })
   }
 
   calcSize(image){
@@ -50,9 +54,6 @@ class App extends Component {
       fileReader.onload = function (e) {
           var image = new window.Image();
           image.src = e.target.result;
-          self.setState({
-            img : image
-          })
           image.onload = function () {
               self.drawImageData(image);
           }
