@@ -58,7 +58,8 @@ class App extends Component {
               self.drawImageData(image);
           }
       };
-      fileReader.readAsDataURL(file);}
+      fileReader.readAsDataURL(file);
+    }
     else{
 
     }
